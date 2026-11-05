@@ -14,91 +14,97 @@ export default function PortfolioPreview({ projects: externalProjects }) {
   const galleryRef = useRef(null);
   const trackRef = useRef(null);
 
-  // 6 Curated Showcase Projects matching the UI reference screenshots
+  // 6 Curated Showcase Projects matching exact user portfolio specifications
   const defaultProjects = [
     {
       id: '01',
       code: 'PRJ-01',
-      year: '2024',
-      category: 'CONSTRUCTION SERVICES',
-      title: 'Build in Dubai',
+      year: '2025',
+      category: 'REAL ESTATE & PARALLAX',
+      title: 'Elite Real Estate Parallax',
       description:
-        "Dubai Municipality's unified construction platform. It consolidates more than 60 scattered government services into one intuitive portal, from initial design approval to final completion certification.",
-      tags: ['VUE 3', 'PWA', 'NEXT.JS', 'FRONTEND ARCHITECTURE'],
-      image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1800&q=85',
-      metrics: '60+ Gov Services',
-      telemetry: 'LAT: 25.2048° N, LONG: 55.2708° E | STATUS: LIVE',
+        'High-performance luxury real estate web experience built with Next.js. Features cinematic scroll-driven parallax effects, interactive property floorplans, architectural showcase galleries, and modern responsive layouts.',
+      tags: ['NEXT.JS', 'REACT', 'PARALLAX EFFECTS', 'TAILWIND CSS'],
+      image: '/images/real-estate-parallex-website.webp',
+      metrics: 'Featured Personal Project',
+      telemetry: 'DOMAIN: REAL ESTATE • STACK: NEXT.JS & PARALLAX • STATUS: LIVE',
       link: '#',
+      isClientWork: false, // Personal project -> Active Case Study link
     },
     {
       id: '02',
       code: 'PRJ-02',
       year: '2024',
-      category: 'TRAVEL & MOBILE SAAS',
-      title: 'KeyPharma Trava',
+      category: 'PRINTING & PACKAGING SOLUTIONS',
+      title: 'PrintCraft Industrial Solutions',
       description:
-        'High-energy promotional launch site for a travel discovery platform featuring interactive 3D destination previews, dynamic itinerary planning, and frictionless mobile app conversions.',
-      tags: ['REACT', 'NEXT.JS', 'TAILWIND CSS', 'APP UI'],
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1800&q=85',
-      metrics: '50K+ Downloads',
-      telemetry: 'SYS ID: TRAVA-SaaS // DEPLOYED: PRODUCTION',
-      link: '#',
+        'Commercial printing and packaging solutions website developed with PHP. Features automated quote inquiries, paper & finish product catalog showcase, and a streamlined client contact pipeline.',
+      tags: ['PHP', 'MYSQL', 'WEB DEVELOPMENT', 'RESPONSIVE UI'],
+      image: '/images/printing-solution-website.webp',
+      metrics: 'Office Client Work',
+      telemetry: 'DOMAIN: PRINTING SOLUTIONS • STACK: PHP & MYSQL • CLIENT DEPLOYED',
+      link: null,
+      isClientWork: true, // Office client website -> Disabled
     },
     {
       id: '03',
       code: 'PRJ-03',
       year: '2024',
-      category: 'LEGAL & CONSULTING',
-      title: 'Alexander & Partners',
+      category: 'REAL ESTATE & PROPERTY PORTAL',
+      title: 'PrimeLand Realty Portal',
       description:
-        'A prestigious, conversion-focused digital presence for high-end corporate legal consultants. Features real-time consultation scheduling, encrypted inquiry pipelines, and technical SEO architecture.',
-      tags: ['NEXT.JS 14', 'TECHNICAL SEO', 'SCHEMA.ORG', 'REST API'],
-      image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1800&q=85',
-      metrics: '+140% Inquiries',
-      telemetry: 'CORE WEB VITALS: 99/100 | INDEXED: GOOGLE',
-      link: '#',
+        'Conversion-focused real estate portal engineered with PHP. Built with structured property listings, neighborhood property filtering, high-converting lead capture pipelines, and search engine optimization.',
+      tags: ['PHP', 'TECHNICAL SEO', 'PROPERTY PORTAL', 'LEAD GEN'],
+      image: '/images/real-estate-website.webp',
+      metrics: 'Office Client Work',
+      telemetry: 'DOMAIN: REAL ESTATE PORTAL • STACK: PHP & SEO • CLIENT DEPLOYED',
+      link: null,
+      isClientWork: true, // Office client website -> Disabled
     },
     {
       id: '04',
       code: 'PRJ-04',
       year: '2024',
-      category: 'COMMERCIAL SERVICES',
-      title: 'GreenScape Eco Care',
+      category: 'HEALTHCARE & DOCTOR PORTFOLIO',
+      title: 'Dr. Care Medical Consultant',
       description:
-        'Nature-inspired commercial and residential landscaping platform equipped with an instant algorithmic pricing calculator, recurring service booking, and automated CRM notifications.',
-      tags: ['FULL STACK', 'PHP', 'LARAVEL', 'UI/UX DESIGN'],
-      image: 'https://images.unsplash.com/photo-1558904541-efa8c4a08931?auto=format&fit=crop&w=1800&q=85',
-      metrics: '3.2x Bookings',
-      telemetry: 'LATENCY: 18ms | DATABASE: MYSQL LIVE',
-      link: '#',
+        'Professional healthcare specialist and medical consultant portfolio built with PHP. Includes patient appointment booking forms, clinical treatment breakdowns, verified patient reviews, and mobile-first speed.',
+      tags: ['PHP', 'HEALTHCARE UI', 'APPOINTMENTS', 'ON-PAGE SEO'],
+      image: '/images/Doctor-portfolio-website.webp',
+      metrics: 'Office Client Work',
+      telemetry: 'DOMAIN: DOCTOR PORTFOLIO • STACK: PHP & HEALTHCARE • CLIENT DEPLOYED',
+      link: null,
+      isClientWork: true, // Office client website -> Disabled
     },
     {
       id: '05',
       code: 'PRJ-05',
       year: '2024',
-      category: 'FINANCIAL & WEALTH',
-      title: 'Vanguard Wealth Advisory',
+      category: 'BRANDING & CREATIVE STUDIO',
+      title: 'AuraBrand Creative Agency',
       description:
-        'Trust-centric enterprise portal engineered for institutional wealth managers. Highlights encrypted client reporting dashboards, live market indices integration, and strict security compliance.',
-      tags: ['REACT', 'NODE.JS', 'EXPRESS', 'SECURITY TOKENS'],
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=85',
-      metrics: '$24M Inbound',
-      telemetry: 'ENCRYPTION: AES-256 | REGION: US-EAST',
-      link: '#',
+        'Visual branding agency web presence crafted with PHP. Highlights corporate brand transformations, visual identity case studies, custom typography presentations, and digital design portfolio showcases.',
+      tags: ['PHP', 'BRANDING STUDIO', 'CREATIVE AGENCY', 'UI/UX'],
+      image: '/images/Branding-website.webp',
+      metrics: 'Office Client Work',
+      telemetry: 'DOMAIN: BRANDING AGENCY • STACK: PHP & CREATIVE UI • CLIENT DEPLOYED',
+      link: null,
+      isClientWork: true, // Office client website -> Disabled
     },
     {
       id: '06',
       code: 'PRJ-06',
       year: '2024',
-      category: 'ANALYTICS & SEO AUDIT',
-      title: 'MindCarve Performance Suite',
+      category: 'AI POSTER & PRODUCT BRANDING',
+      title: 'AI Generative Posters & Brand Collateral',
       description:
-        'Custom web auditing and keyword rank tracking dashboard. Streams real-time Google Analytics 4 sessions, Search Console query rankings, and Core Web Vitals health diagnostics.',
-      tags: ['NEXT.JS', 'GA4 API', 'SEARCH CONSOLE', 'MONGODB'],
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=85',
-      metrics: '+185% Visibility',
-      telemetry: 'AUDIT ENGINE: V2.4 | REALTIME: CONNECTED',
-      link: '#',
+        'Creative suite of AI-assisted promotional posters, digital marketing creatives, and product branding graphics. Designed using Claude AI, Google Antigravity, and Canva for high-impact social media and brand awareness.',
+      tags: ['GENERATIVE AI', 'CANVA', 'AI POSTER DESIGN', 'PRODUCT BRANDING'],
+      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1800&q=85',
+      metrics: 'Design & Branding Work',
+      telemetry: 'DOMAIN: AI POSTERS & BRANDING • TOOLS: GENERATIVE AI & CANVA',
+      link: null,
+      isClientWork: true, // Client design work -> Disabled
     },
   ];
 
@@ -138,8 +144,22 @@ export default function PortfolioPreview({ projects: externalProjects }) {
     };
 
     calculateTrackWidth();
+    const timer = setTimeout(calculateTrackWidth, 300);
+
+    let resizeObserver;
+    if (typeof ResizeObserver !== 'undefined' && trackRef.current) {
+      resizeObserver = new ResizeObserver(() => {
+        calculateTrackWidth();
+      });
+      resizeObserver.observe(trackRef.current);
+    }
+
     window.addEventListener('resize', calculateTrackWidth);
-    return () => window.removeEventListener('resize', calculateTrackWidth);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', calculateTrackWidth);
+      if (resizeObserver) resizeObserver.disconnect();
+    };
   }, [projects.length]);
 
   // Scroll synchronization: vertical page scroll drives horizontal translation after header scrolls past
@@ -267,7 +287,7 @@ export default function PortfolioPreview({ projects: externalProjects }) {
                   }`}
                   style={{
                     // Full-width & large card height taking advantage of viewport while ensuring bottom HUD card is 100% visible
-                    height: 'clamp(280px, 58vh, 640px)',
+                    height: 'clamp(240px, 52vh, 640px)',
                     aspectRatio: '16 / 10',
                   }}
                 >
@@ -307,12 +327,7 @@ export default function PortfolioPreview({ projects: externalProjects }) {
                       {/* Gradient Overlay for Cinematic Depth */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
 
-                      {/* Top Status Badge inside image */}
-                      <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-                        <span className="px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono uppercase tracking-wider font-semibold bg-black/70 backdrop-blur-md border border-[#FF5E1E]/50 text-[#FF5E1E]">
-                          {project.year} • {project.code}
-                        </span>
-                      </div>
+                        
 
                       {/* Bottom-Right Image Title Pill */}
                       <div className="absolute bottom-5 right-6 z-10 hidden sm:block">
@@ -329,7 +344,7 @@ export default function PortfolioPreview({ projects: externalProjects }) {
 
           {/* ─── 3. FLOATING BOTTOM-LEFT CYBER HUD DETAILS CARD ─── */}
           <div 
-            className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-8 lg:left-12 z-30 w-[calc(100%-2rem)] sm:w-auto sm:max-w-lg md:max-w-xl p-3.5 sm:p-5 md:p-6 rounded-2xl bg-[#0f1015]/95 backdrop-blur-xl border border-[#FF5E1E]/40 shadow-2xl shadow-[#FF5E1E]/20 select-none transition-all duration-500"
+            className="absolute bottom-3 sm:bottom-6 md:bottom-8 left-3 sm:left-8 lg:left-12 z-30 w-[calc(100%-1.5rem)] sm:w-auto sm:max-w-lg md:max-w-xl p-3 sm:p-5 md:p-6 rounded-2xl bg-[#0f1015]/95 backdrop-blur-xl border border-[#FF5E1E]/40 shadow-2xl shadow-[#FF5E1E]/20 select-none transition-all duration-500 max-h-[44vh] sm:max-h-none overflow-y-auto"
             style={{
               clipPath:
                 'polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px)',
@@ -339,59 +354,74 @@ export default function PortfolioPreview({ projects: externalProjects }) {
             <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#FF5E1E]" />
             <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#FF5E1E]" />
 
-            {/* Top Row: Category + Project Code + Year */}
-            <div className="flex items-center justify-between gap-4 pb-1.5 border-b border-white/10 mb-2 text-[10px] sm:text-[11px] font-mono tracking-wider">
-              <span className="text-[#FF5E1E] uppercase font-semibold">
+            {/* Top Row: Category + Project Code + Year + Mobile Counter */}
+            <div className="flex items-center justify-between gap-3 pb-1.5 border-b border-white/10 mb-2 text-[10px] sm:text-[11px] font-mono tracking-wider">
+              <span className="text-[#FF5E1E] uppercase font-semibold truncate">
                 // {currentProject.category}
               </span>
-              <span className="text-zinc-400">
-                {currentProject.code} • {currentProject.year}
-              </span>
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                <span className="text-zinc-400">
+                  {currentProject.code} • {currentProject.year}
+                </span>
+                <span className="sm:hidden font-orbitron font-bold text-[#FF5E1E] ml-1">
+                  [{String(activeProjectIndex + 1).padStart(2, '0')}/{String(projects.length).padStart(2, '0')}]
+                </span>
+              </div>
             </div>
 
             {/* Project Title */}
-            <h3 className="font-orbitron font-bold text-xl sm:text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            <h3 className="font-orbitron font-bold text-lg sm:text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
               {currentProject.title}
             </h3>
 
             {/* Project Description */}
-            <p className="text-xs sm:text-sm text-zinc-300 font-normal mt-2 leading-relaxed line-clamp-2 sm:line-clamp-3">
+            <p className="text-xs sm:text-sm text-zinc-300 font-normal mt-1.5 sm:mt-2 leading-relaxed line-clamp-2 sm:line-clamp-3">
               {currentProject.description}
             </p>
 
             {/* Tech Tags Row + Open Case Study CTA Button */}
-            <div className="flex flex-wrap items-center justify-between gap-3 mt-4 pt-2.5 border-t border-white/10">
+            <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 mt-3 sm:mt-4 pt-2 sm:pt-2.5 border-t border-white/10">
               
               {/* Tech Pills */}
-              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              <div className="flex flex-wrap gap-1 sm:gap-2">
                 {currentProject.tags.map((tag, tIdx) => (
                   <span
                     key={tIdx}
-                    className="px-2.5 py-0.5 rounded bg-white/5 border border-[#FF5E1E]/30 text-[9px] sm:text-[10px] font-mono font-medium text-zinc-300 uppercase tracking-wider"
+                    className="px-2 sm:px-2.5 py-0.5 rounded bg-white/5 border border-[#FF5E1E]/30 text-[9px] sm:text-[10px] font-mono font-medium text-zinc-300 uppercase tracking-wider"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              {/* Open Case Study CTA */}
-              <a
-                href={currentProject.link || '#'}
-                className="group inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-[#FF5E1E] hover:bg-[#ff723b] text-white text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg shadow-[#FF5E1E]/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
-              >
-                <span>OPEN CASE STUDY</span>
-                <ArrowUpRight className="w-3.5 h-3.5 group-hover:rotate-45 transition-transform" />
-              </a>
+              {/* CTA Button: Active for Project 1, Cleanly Disabled for Office Client Projects */}
+              {!currentProject.isClientWork ? (
+                <a
+                  href={currentProject.link || '#'}
+                  className="group inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded bg-[#FF5E1E] hover:bg-[#ff723b] text-white text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg shadow-[#FF5E1E]/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                >
+                  <span>OPEN CASE STUDY</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:rotate-45 transition-transform" />
+                </a>
+              ) : (
+                <div
+                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded bg-white/5 border border-white/10 text-zinc-500 text-[9px] sm:text-[10px] font-mono uppercase tracking-wider cursor-not-allowed select-none"
+                  title="Office client project"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-600" />
+                  <span>CLIENT WORK (CONFIDENTIAL)</span>
+                </div>
+              )}
             </div>
 
             {/* Micro-telemetry Status at bottom (Full line cleanly displayed) */}
-            <div className="pt-2 mt-2 border-t border-white/5 text-[9px] font-mono text-zinc-500 tracking-widest uppercase">
+            <div className="pt-1.5 sm:pt-2 mt-1.5 sm:mt-2 border-t border-white/5 text-[9px] font-mono text-zinc-500 tracking-widest uppercase truncate">
               // {currentProject.telemetry}
             </div>
           </div>
 
-          {/* ─── 4. FLOATING BOTTOM-RIGHT COUNTER (01 / 06) + SCROLL HINT ─── */}
-          <div className="absolute bottom-6 sm:bottom-8 right-6 sm:right-10 lg:right-16 z-30 flex items-center gap-6 select-none">
+          {/* ─── 4. FLOATING BOTTOM-RIGHT COUNTER (01 / 06) + SCROLL HINT (Desktop & Tablet) ─── */}
+          <div className="hidden sm:flex absolute bottom-6 sm:bottom-8 right-6 sm:right-10 lg:right-16 z-30 items-center gap-6 select-none">
             
             {/* Subtle Scroll Indicator */}
             <div className="hidden md:flex items-center gap-2 text-zinc-500 font-mono text-[11px] tracking-widest uppercase">

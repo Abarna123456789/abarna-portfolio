@@ -66,7 +66,7 @@ export default function HomePage() {
       {/* Floating Scroll To Top Button (Up Arrow) */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-[#FF5E1E] text-white flex items-center justify-center shadow-2xl shadow-[#FF5E1E]/50 hover:bg-[#ff723b] hover:scale-110 active:scale-95 transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#FF5E1E] text-white flex items-center justify-center shadow-2xl shadow-[#FF5E1E]/50 hover:bg-[#ff723b] hover:scale-110 active:scale-95 transition-all duration-300 ${
           showScrollTop
             ? 'opacity-100 translate-y-0 pointer-events-auto'
             : 'opacity-0 translate-y-8 pointer-events-none'

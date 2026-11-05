@@ -48,9 +48,18 @@ body {
   background-color: #08080a;
   color: #f3f4f6;
   font-family: var(--font-inter);
-  overflow-x: hidden;
+  overflow-x: clip;
   selection-background-color: #FF5E1E;
   selection-color: #ffffff;
+}
+
+/* Hide scrollbars for clean horizontal slider pills */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 ::selection {

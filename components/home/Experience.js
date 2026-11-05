@@ -121,25 +121,22 @@ export default function Experience() {
         <div className="pb-12 sm:pb-16 border-b border-white/10">
           
           {/* Headline in Orbitron Typography matching Skills Font Size & Style */}
-          <div className="text-left select-none">
+          <div className="text-left select-none max-w-full">
             <div 
-              className={`inline-block relative transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`inline-block relative max-w-full transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isInView 
                   ? 'opacity-100 translate-y-0 scale-100' 
                   : 'opacity-0 translate-y-8 scale-95'
               }`}
             >
-              <h2 className="font-orbitron font-black text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[5.5rem] 2xl:text-[5.5rem] text-white tracking-wider uppercase leading-none drop-shadow-2xl">
+              <h2 className="font-orbitron font-black text-2xl min-[380px]:text-3xl sm:text-5xl md:text-6xl lg:text-[5.5rem] text-white tracking-wider uppercase leading-tight sm:leading-none drop-shadow-2xl break-words">
                 CAREER JOURNEY ARCHITECTURE
               </h2>
-
-              {/* Glowing Orange Underline */}
-              
             </div>
 
             {/* Subtitle with Smooth Entrance Reveal */}
             <p 
-              className={`text-xs sm:text-sm md:text-base text-zinc-400 font-normal mt-4 sm:mt-5 max-w-2xl leading-relaxed transition-all duration-1000 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`text-xs sm:text-sm md:text-base text-zinc-400 font-normal mt-3 sm:mt-5 max-w-2xl leading-relaxed transition-all duration-1000 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isInView 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-5'
@@ -150,11 +147,11 @@ export default function Experience() {
           </div>
 
           {/* Filter Switcher Button: Aligned Below the Title on the Right Side */}
-          <div className="flex justify-start sm:justify-end mt-8 sm:mt-10">
-            <div className="flex items-center gap-2 p-1.5 rounded-full bg-white/5 border border-white/15 backdrop-blur-md">
+          <div className="flex justify-start sm:justify-end mt-6 sm:mt-10 overflow-x-auto max-w-full pb-1 sm:pb-0">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-full bg-white/5 border border-white/15 backdrop-blur-md flex-shrink-0">
               <button
                 onClick={() => setActiveTab('all')}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs md:text-sm font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer whitespace-nowrap ${
                   activeTab === 'all'
                     ? 'bg-[#FF5E1E] text-white shadow-xl shadow-[#FF5E1E]/50 ring-2 ring-[#FF5E1E] scale-105'
                     : 'text-zinc-400 hover:text-white hover:bg-white/5'
@@ -164,7 +161,7 @@ export default function Experience() {
               </button>
               <button
                 onClick={() => setActiveTab('work')}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs md:text-sm font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer whitespace-nowrap ${
                   activeTab === 'work'
                     ? 'bg-[#FF5E1E] text-white shadow-xl shadow-[#FF5E1E]/50 ring-2 ring-[#FF5E1E] scale-105'
                     : 'text-zinc-400 hover:text-white hover:bg-white/5'
@@ -174,7 +171,7 @@ export default function Experience() {
               </button>
               <button
                 onClick={() => setActiveTab('education')}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs md:text-sm font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer whitespace-nowrap ${
                   activeTab === 'education'
                     ? 'bg-[#FF5E1E] text-white shadow-xl shadow-[#FF5E1E]/50 ring-2 ring-[#FF5E1E] scale-105'
                     : 'text-zinc-400 hover:text-white hover:bg-white/5'
@@ -201,10 +198,10 @@ export default function Experience() {
 
                 {/* Big Editorial Headline with Italic Serif Accent */}
                 <div className="space-y-1">
-                  <h2 className="font-giant text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.9] text-white uppercase">
+                  <h2 className="font-giant text-4xl min-[380px]:text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.9] text-white uppercase">
                     WHERE
                   </h2>
-                  <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.9] text-white">
+                  <h2 className="text-4xl min-[380px]:text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.9] text-white">
                     <span className="font-giant uppercase">I&apos;VE </span>
                     <span className="font-editorial text-[#FF5E1E] font-normal italic tracking-normal">
                       WORKED
@@ -339,10 +336,10 @@ export default function Experience() {
 
                 {/* Big Editorial Headline with Italic Serif Accent matching Image 1 */}
                 <div className="space-y-1">
-                  <h2 className="font-giant text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.9] text-white uppercase">
+                  <h2 className="font-giant text-4xl min-[380px]:text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.9] text-white uppercase">
                     WHERE
                   </h2>
-                  <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.9] text-white">
+                  <h2 className="text-4xl min-[380px]:text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.9] text-white">
                     <span className="font-giant uppercase">IT </span>
                     <span className="font-editorial text-[#FF5E1E] font-normal italic tracking-normal">
                       BEGAN

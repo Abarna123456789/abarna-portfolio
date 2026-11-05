@@ -69,19 +69,31 @@ export default function Navbar() {
               <span className="h-2 w-2 rounded-full bg-[#FF5E1E] animate-pulse"></span>
             </Link>
 
-            {/* Menu Button matching Screenshot a0216d6b: "Menu" + Orange circle with hamburger icon */}
-            <button
-              onClick={() => setDrawerOpen(true)}
-              className="flex items-center gap-3 group cursor-pointer select-none"
-              aria-label="Open navigation menu"
-            >
-              <span className="text-sm sm:text-base font-semibold tracking-wide text-white group-hover:text-[#FF5E1E] transition-colors">
-                Menu
-              </span>
-              <div className="w-10 h-10 rounded-full bg-[#FF5E1E] hover:bg-[#ff723b] text-white flex items-center justify-center shadow-lg shadow-[#FF5E1E]/40 group-hover:scale-105 active:scale-95 transition-all">
-                <Menu className="w-5 h-5 stroke-[2.5]" />
-              </div>
-            </button>
+            {/* Right Buttons: "Let's Talk ↗" CTA + Sleek "MENU ☰" Button matching Screenshot fbda01e0 */}
+            <div className="flex items-center gap-2.5 sm:gap-3.5">
+              {/* Direct Quick CTA Button */}
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#FF5E1E] hover:bg-[#ff723b] text-white text-xs sm:text-sm font-bold tracking-wider uppercase shadow-lg shadow-[#FF5E1E]/30 hover:shadow-[#FF5E1E]/50 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+              >
+                <span>Let&apos;s Talk</span>
+                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] group-hover:rotate-45 transition-transform duration-200" />
+              </a>
+
+              {/* Menu Button */}
+              <button
+                onClick={() => setDrawerOpen(true)}
+                className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white transition-all cursor-pointer select-none group"
+                aria-label="Open navigation menu"
+              >
+                <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase group-hover:text-[#FF5E1E] transition-colors">
+                  Menu
+                </span>
+                <div className="w-6 h-6 rounded-full bg-[#FF5E1E] text-white flex items-center justify-center shadow-md shadow-[#FF5E1E]/30 group-hover:scale-110 transition-transform">
+                  <Menu className="w-3.5 h-3.5 stroke-[2.5]" />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -96,7 +108,7 @@ export default function Navbar() {
 
       {/* Responsive Slide-in Drawer matching imagecef63f71 */}
       <aside
-        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-[360px] sm:max-w-[420px] bg-[#0c0c0e] border-l border-white/10 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto transition-transform duration-300 ease-out shadow-2xl ${
+        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-[300px] min-[360px]:max-w-[340px] sm:max-w-[420px] bg-[#0c0c0e] border-l border-white/10 p-5 sm:p-8 flex flex-col justify-between overflow-y-auto transition-transform duration-300 ease-out shadow-2xl ${
           drawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -191,21 +203,15 @@ export default function Navbar() {
 
         {/* Drawer Bottom Actions */}
         <div className="pt-6 mt-6 border-t border-white/10">
-          {/* Availability Status */}
-          <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-300 mb-3.5">
-            <span>🎉</span>
-            <span>3 spots remaining this month</span>
-          </div>
-
-          {/* Book Call CTA Button matching screenshot */}
+          {/* Book Call CTA Button - fits text size with tight gap */}
           <a
             href="#contact"
             onClick={() => setDrawerOpen(false)}
-            className="w-full bg-[#FF5E1E] hover:bg-[#ff723b] text-white pl-6 pr-2.5 py-3 rounded-full flex items-center justify-between shadow-xl shadow-[#FF5E1E]/30 hover:scale-[1.01] active:scale-[0.99] transition-all font-bold text-sm sm:text-base group"
+            className="inline-flex items-center gap-3.5 bg-[#FF5E1E] hover:bg-[#ff723b] text-white pl-6 pr-2 py-2 rounded-full shadow-xl shadow-[#FF5E1E]/30 hover:scale-[1.02] active:scale-[0.98] transition-all font-bold text-sm sm:text-base group"
           >
-            <span>Book a 30min Free Call</span>
-            <div className="w-9 h-9 rounded-full bg-white text-[#FF5E1E] flex items-center justify-center shadow group-hover:rotate-45 transition-transform duration-300">
-              <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
+            <span>Book a Free Call</span>
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-[#FF5E1E] flex items-center justify-center shadow group-hover:rotate-45 transition-transform duration-300">
+              <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
             </div>
           </a>
         </div>

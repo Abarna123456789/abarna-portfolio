@@ -472,8 +472,8 @@ export default function Skills() {
                   </div>
 
                   {/* Middle Column: Giant Title, Subtitle, and Tech Tag Pills */}
-                  <div className="flex-1 text-left flex flex-col justify-center">
-                    <h3 className="font-giant text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.5rem] uppercase tracking-wide text-white leading-[0.9] transition-colors">
+                  <div className="flex-1 text-left flex flex-col justify-center min-w-0">
+                    <h3 className="font-giant text-3xl min-[380px]:text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.5rem] uppercase tracking-wide text-white leading-[0.9] transition-colors break-words pr-12 lg:pr-0">
                       {skill.title}
                     </h3>
 
@@ -486,7 +486,7 @@ export default function Skills() {
                       {skill.tags.map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-300 font-medium hover:border-[#FF5E1E]/40 hover:text-white transition-colors"
+                          className="px-3.5 sm:px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-300 font-medium hover:border-[#FF5E1E]/40 hover:text-white transition-colors"
                         >
                           {tag}
                         </span>

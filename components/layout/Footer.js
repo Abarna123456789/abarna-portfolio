@@ -46,10 +46,10 @@ export default function Footer({ profile }) {
 
           {/* Column 2: Quick Links matching Navbar */}
           <div className="md:col-span-3 lg:col-span-3 space-y-4">
-            <h4 className="font-giant text-xl sm:text-2xl text-white uppercase tracking-wider">
+            <h4 className="font-giant text-xl sm:text-5xl text-white uppercase tracking-wider">
               Quick Links
             </h4>
-            <ul className="space-y-2 text-sm text-zinc-400 font-medium">
+            <ul className="space-y-2 text-base sm:text-lg text-zinc-400 font-medium">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
                   Home
@@ -84,11 +84,11 @@ export default function Footer({ profile }) {
           </div>
 
           {/* Column 3: Contact System with Circular Icons matching Screenshot */}
-          <div className="md:col-span-4 lg:col-span-4 space-y-4">
-            <h4 className="font-giant text-xl sm:text-2xl text-white uppercase tracking-wider">
+          <div className="md:col-span-4 lg:col-span-4 space-y-4 min-w-0">
+            <h4 className="font-giant text-xl sm:text-5xl text-white uppercase tracking-wider">
               Contact System
             </h4>
-            <div className="space-y-3.5 text-sm">
+            <div className="space-y-3.5 text-sm sm:text-base md:text-lg">
               {/* WhatsApp / Phone */}
               <a
                 href="https://wa.me/916374357194"
@@ -105,12 +105,12 @@ export default function Footer({ profile }) {
               {/* Email */}
               <a
                 href="mailto:abarnaezhumalai2002@gmail.com"
-                className="flex items-center gap-3 text-zinc-300 hover:text-white transition-colors group"
+                className="flex items-center gap-3 text-zinc-300 hover:text-white transition-colors group min-w-0"
               >
                 <span className="w-6 h-6 rounded-full bg-white text-[#FF5E1E] flex items-center justify-center text-xs font-bold shadow flex-shrink-0">
                   @
                 </span>
-                <span className="font-medium">abarnaezhumalai2002@gmail.com</span>
+                <span className="font-medium break-all">abarnaezhumalai2002@gmail.com</span>
               </a>
             </div>
           </div>
@@ -118,8 +118,8 @@ export default function Footer({ profile }) {
         </div>
 
         {/* GIANT CONDENSED WATERMARK TYPOGRAPHY: ABARNA E */}
-        <div className="pt-10 sm:pt-16 pb-8 sm:pb-12 text-center select-none overflow-hidden relative">
-          <h2 className="font-giant text-[16vw] sm:text-[18vw] leading-[0.75] tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/40 to-transparent pointer-events-none drop-shadow-[0_15px_35px_rgba(255,94,30,0.25)]">
+        <div className="pt-10 sm:pt-16 pb-8 sm:pb-12 text-center select-none overflow-hidden relative max-w-full">
+          <h2 className="font-giant text-[16vw] sm:text-[18vw] leading-[0.75] tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/40 to-transparent pointer-events-none drop-shadow-[0_15px_35px_rgba(255,94,30,0.25)] max-w-full truncate">
             ABARNA E
           </h2>
         </div>

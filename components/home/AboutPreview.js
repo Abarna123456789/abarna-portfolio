@@ -73,9 +73,9 @@ export default function AboutPreview({ profile }) {
           
           {/* Left Column: ✦ ABOUT ME ──────→ (Compact col-span-2) */}
           <div className="lg:col-span-2 pt-3">
-            <div className="flex items-center gap-3 select-none">
+            <div className="flex items-center gap-2.5 sm:gap-3 select-none">
               {/* Fiery Star Icon */}
-              <span className="text-[#FF5E1E] text-base leading-none drop-shadow-[0_0_8px_rgba(255,94,30,0.7)]">
+              <span className="text-[#FF5E1E] text-base leading-none drop-shadow-[0_0_8px_rgba(255,94,30,0.7)] flex-shrink-0">
                 ✦
               </span>
 
@@ -85,7 +85,7 @@ export default function AboutPreview({ profile }) {
               </span>
 
               {/* Vector Arrow Line */}
-              <div className="flex items-center w-20 sm:w-28 lg:w-32">
+              <div className="flex items-center w-14 min-[380px]:w-20 sm:w-28 lg:w-32 flex-shrink min-w-0">
                 <svg
                   className="w-full h-3 overflow-visible text-zinc-500/80"
                   viewBox="0 0 120 8"
@@ -113,9 +113,9 @@ export default function AboutPreview({ profile }) {
           </div>
 
           {/* Right Column: Widened Text Container (col-span-10) */}
-          <div className="lg:col-span-10 space-y-8 sm:space-y-10 w-full">
+          <div className="lg:col-span-10 space-y-8 sm:space-y-10 w-full min-w-0">
             {/* Scroll-illuminated text with exact Oswald condensed typography matching screenshot */}
-            <h2 className="font-oswald text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[46px] font-medium leading-[1.14] tracking-tight select-none transition-all w-full">
+            <h2 className="font-oswald text-2xl min-[380px]:text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[46px] font-medium leading-[1.18] sm:leading-[1.14] tracking-tight select-none transition-all w-full break-words">
               {words.map((word, idx) => {
                 const wordThreshold = idx / words.length;
                 const wordProgress = Math.min(
@@ -180,30 +180,30 @@ export default function AboutPreview({ profile }) {
           </div>
 
           {/* 4-Column Stat Blocks with Vertical Dividers */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 lg:gap-y-0 border-y border-white/10 py-10 lg:py-14">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 sm:gap-y-10 lg:gap-y-0 border-y border-white/10 py-8 sm:py-10 lg:py-14">
             {metrics.map((metric, idx) => (
               <div
                 key={idx}
-                className={`flex flex-col justify-between px-6 sm:px-10 ${
+                className={`flex flex-col justify-between px-3 sm:px-6 lg:px-10 min-w-0 ${
                   idx < 3 ? 'lg:border-r border-white/10' : ''
                 } ${idx % 2 === 0 ? 'border-r lg:border-r border-white/10' : ''}`}
               >
                 {/* Big Number & Symbol */}
                 <div className="flex flex-col items-start select-none">
-                  <span className="font-giant text-6xl sm:text-7xl lg:text-8xl text-white font-extrabold leading-none tracking-tight">
+                  <span className="font-giant text-5xl sm:text-7xl lg:text-8xl text-white font-extrabold leading-none tracking-tight">
                     {metric.value}
                   </span>
                   {metric.symbol ? (
-                    <span className="text-[#FF5E1E] text-2xl sm:text-3xl font-bold leading-none mt-2">
+                    <span className="text-[#FF5E1E] text-xl sm:text-2xl lg:text-3xl font-bold leading-none mt-2">
                       {metric.symbol}
                     </span>
                   ) : (
-                    <div className="h-6 sm:h-8" />
+                    <div className="h-5 sm:h-8" />
                   )}
                 </div>
 
                 {/* Subtitle Label */}
-                <span className="text-[11px] sm:text-xs font-bold tracking-widest text-zinc-400 uppercase mt-8 select-none">
+                <span className="text-[10px] sm:text-xs font-bold tracking-widest text-zinc-400 uppercase mt-6 sm:mt-8 select-none break-words">
                   {metric.label}
                 </span>
               </div>

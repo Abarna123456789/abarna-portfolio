@@ -143,15 +143,15 @@ Looking forward to connecting with you!`;
             {/* Direct Value Perks */}
             <div className="space-y-3.5 pt-2 border-t border-white/10">
               <div className="flex items-center gap-3 text-xs sm:text-sm text-zinc-300">
-                <span className="text-[#FF5E1E] font-bold text-base">✓</span>
+                <span className="text-[#FF5E1E] font-bold text-base flex-shrink-0">✓</span>
                 <span>Direct collaboration with zero middleman friction</span>
               </div>
               <div className="flex items-center gap-3 text-xs sm:text-sm text-zinc-300">
-                <span className="text-[#FF5E1E] font-bold text-base">✓</span>
+                <span className="text-[#FF5E1E] font-bold text-base flex-shrink-0">✓</span>
                 <span>Production-ready code optimized for speed & Google rankings</span>
               </div>
               <div className="flex items-center gap-3 text-xs sm:text-sm text-zinc-300">
-                <span className="text-[#FF5E1E] font-bold text-base">✓</span>
+                <span className="text-[#FF5E1E] font-bold text-base flex-shrink-0">✓</span>
                 <span>Guaranteed on-time milestone delivery</span>
               </div>
             </div>
@@ -160,16 +160,16 @@ Looking forward to connecting with you!`;
             <div className="pt-2 space-y-3">
               <a
                 href="mailto:abarnaezhumalai2002@gmail.com"
-                className="flex items-center gap-3.5 text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors group"
+                className="flex items-center gap-3.5 text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors group break-all"
               >
-                <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-[#FF5E1E] flex items-center justify-center group-hover:scale-105 transition-transform">
+                <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-[#FF5E1E] flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <span>abarnaezhumalai2002@gmail.com</span>
               </a>
 
               <div className="flex items-center gap-2.5 text-xs text-zinc-400 font-mono pt-1">
-                <Clock className="w-4 h-4 text-[#FF5E1E]" />
+                <Clock className="w-4 h-4 text-[#FF5E1E] flex-shrink-0" />
                 <span>Average response time: &lt; 24 hours</span>
               </div>
             </div>
@@ -177,8 +177,8 @@ Looking forward to connecting with you!`;
           </div>
 
           {/* ─── RIGHT SIDE: CONTACT FORM (With Requested Fields) ─── */}
-          <div className="lg:col-span-7">
-            <div className="p-7 sm:p-10 rounded-3xl bg-[#0d0e12] border border-white/10 shadow-2xl relative">
+          <div className="lg:col-span-7 w-full min-w-0">
+            <div className="p-4 min-[400px]:p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-[#0d0e12] border border-white/10 shadow-2xl relative">
               {/* Subtle top inner orange rim glow */}
               <div className="absolute top-0 inset-x-10 h-[1px] bg-gradient-to-r from-transparent via-[#FF5E1E]/60 to-transparent" />
 
@@ -275,7 +275,7 @@ Looking forward to connecting with you!`;
 
                   {/* Dropdown Menu Popover matching screenshot b7ca6c03 */}
                   {isDropdownOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-[#141417] border border-zinc-800 rounded-2xl p-2 shadow-2xl backdrop-blur-xl animate-in fade-in-0 zoom-in-95 duration-150">
+                    <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-[#141417] border border-zinc-800 rounded-2xl p-2 shadow-2xl backdrop-blur-xl animate-in fade-in-0 zoom-in-95 duration-150 max-h-60 overflow-y-auto">
                       {subjectOptions.map((option) => {
                         const isSelected = formData.subject === option;
 
