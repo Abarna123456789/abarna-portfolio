@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600;1,700&family=Syne:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-syne: 'Syne', sans-serif;
+  --font-bebas: 'Bebas Neue', cursive, sans-serif;
+  --font-oswald: 'Oswald', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-orbitron: 'Orbitron', sans-serif;
+  --color-orange: #FF5E1E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+/* Lenis Butter-Smooth Scrolling Optimization */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  background-color: #08080a;
+  color: #f3f4f6;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  selection-background-color: #FF5E1E;
+  selection-color: #ffffff;
+}
+
+::selection {
+  background: #FF5E1E;
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #08080a;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF5E1E;
+}
+
+/* Cosmic Atmospheric Glows */
+.cosmic-hero-bg {
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 94, 30, 0.35) 0%, rgba(255, 69, 0, 0.15) 45%, transparent 80%),
+    radial-gradient(circle at 80% 20%, rgba(255, 120, 30, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 20% 30%, rgba(255, 70, 0, 0.12) 0%, transparent 40%),
+    #08080a;
+}
+
+.cosmic-footer-bg {
+  background: 
+    radial-gradient(ellipse 90% 70% at 50% 110%, rgba(255, 94, 30, 0.45) 0%, rgba(255, 60, 0, 0.2) 50%, transparent 85%),
+    #08080a;
+}
+
+/* Giant condensed impact typography like in Robin Ahmed screenshot */
+.font-giant {
+  font-family: var(--font-bebas);
+  letter-spacing: 0.02em;
+  line-height: 0.85;
+}
+
+/* Tall condensed sentence-case typography from Robin Ahmed About section */
+.font-oswald {
+  font-family: var(--font-oswald);
+  letter-spacing: 0.01em;
+}
+
+/* Wide futuristic geometric typography matching "SKILLS" screenshot */
+.font-orbitron {
+  font-family: var(--font-orbitron);
+  letter-spacing: 0.04em;
+}
+
+/* Elegant editorial italic serif typography matching "BEGAN" in screenshot */
+.font-editorial {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* Glow effects */
+.orange-glow-sm {
+  box-shadow: 0 0 25px rgba(255, 94, 30, 0.35);
+}
+
+.orange-glow-lg {
+  box-shadow: 0 0 60px rgba(255, 94, 30, 0.25);
+}
+
+.orange-border-glow {
+  border-color: rgba(255, 94, 30, 0.4);
+  box-shadow: 0 0 20px rgba(255, 94, 30, 0.15);
+}
+
+/* Subtle Starfield noise background */
+.stars-overlay {
+  background-image: 
+    radial-gradient(1px 1px at 25px 35px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 120px 80px, rgba(255, 200, 150, 0.8), transparent),
+    radial-gradient(1px 1px at 220px 180px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 340px 90px, rgba(255, 180, 100, 0.6), transparent),
+    radial-gradient(1px 1px at 450px 240px, rgba(255, 255, 255, 0.5), transparent);
+  background-size: 550px 550px;
+}
+
+/* Custom Circle & Dot Cursor Replacement for Arrow Cursor */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
