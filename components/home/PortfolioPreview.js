@@ -132,14 +132,15 @@ export default function PortfolioPreview({ projects: externalProjects }) {
     return () => observer.disconnect();
   }, []);
 
-  // Measure total horizontal track overflow width
+  // Measure total horizontal track overflow width dynamically
   useEffect(() => {
     const calculateTrackWidth = () => {
       if (trackRef.current) {
         const total = trackRef.current.scrollWidth;
         const viewport = window.innerWidth;
-        // Keep ample spacing at the end for the final card
-        setTrackWidth(Math.max(total - viewport + (window.innerWidth > 768 ? 240 : 80), 0));
+        // Ample margin so the final card is fully viewable across mobile & desktop
+        const endSpacing = window.innerWidth > 768 ? 240 : 80;
+        setTrackWidth(Math.max(total - viewport + endSpacing, 0));
       }
     };
 
@@ -155,9 +156,11 @@ export default function PortfolioPreview({ projects: externalProjects }) {
     }
 
     window.addEventListener('resize', calculateTrackWidth);
+    window.addEventListener('orientationchange', calculateTrackWidth);
     return () => {
       clearTimeout(timer);
       window.removeEventListener('resize', calculateTrackWidth);
+      window.removeEventListener('orientationchange', calculateTrackWidth);
       if (resizeObserver) resizeObserver.disconnect();
     };
   }, [projects.length]);
@@ -171,12 +174,12 @@ export default function PortfolioPreview({ projects: externalProjects }) {
       
       if (totalScrollable <= 0) return;
 
-      // Calculate progress between 0 and 1 strictly while gallery is pinned
+      // Calculate progress strictly while gallery is pinned
       const scrolled = -rect.top;
       const progress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
       setScrollProgress(progress);
 
-      // Dynamically calculate which project is in the active center view
+      // Dynamically update active index based on scroll position
       const rawIdx = Math.round(progress * (projects.length - 1));
       const nextActive = Math.min(Math.max(rawIdx, 0), projects.length - 1);
       setActiveIndex(nextActive);
@@ -195,30 +198,30 @@ export default function PortfolioPreview({ projects: externalProjects }) {
       id="portfolio"
       className="relative bg-[#08080a] border-t border-white/5"
     >
-      {/* Background ambient lighting matching cosmic theme */}
-      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-[#FF5E1E]/8 rounded-full blur-[170px] pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 left-0 w-[550px] h-[550px] bg-[#FF5E1E]/6 rounded-full blur-[160px] pointer-events-none -z-10" />
+      {/* Ambient background lighting */}
+      <div className="absolute top-1/4 right-0 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-[#FF5E1E]/8 rounded-full blur-[140px] sm:blur-[170px] pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 left-0 w-[300px] sm:w-[550px] h-[300px] sm:h-[550px] bg-[#FF5E1E]/6 rounded-full blur-[130px] sm:blur-[160px] pointer-events-none -z-10" />
 
       {/* ─── 1. TOP HEADER (Scrolls Naturally with Page Before Gallery Pins) ─── */}
       <div
         ref={headerRef}
-        className="pt-16 sm:pt-24 pb-12 sm:pb-16 relative overflow-hidden"
+        className="pt-14 sm:pt-24 pb-8 sm:pb-16 relative overflow-hidden"
       >
         {/* Slow Scrolling Ghost Watermark Marquee */}
         <div 
-          className={`w-full overflow-hidden select-none pointer-events-none absolute inset-x-0 top-10 sm:top-14 md:top-16 lg:top-20 z-0 transition-opacity duration-1000 ${
+          className={`w-full overflow-hidden select-none pointer-events-none absolute inset-x-0 top-8 sm:top-14 md:top-16 lg:top-20 z-0 transition-opacity duration-1000 ${
             isInView ? 'opacity-100' : 'opacity-0'
           }`}
           style={{ willChange: 'transform' }}
         >
           <div className="flex w-max animate-marquee-slower">
             <div className="flex items-center flex-shrink-0">
-              <span className="font-orbitron font-black text-[7rem] sm:text-[9.5rem] md:text-[12rem] lg:text-[14rem] xl:text-[16.5rem] uppercase tracking-widest text-white/[0.08] leading-none whitespace-nowrap pr-14 sm:pr-24">
+              <span className="font-orbitron font-black text-[5rem] sm:text-[9.5rem] md:text-[12rem] lg:text-[14rem] xl:text-[16.5rem] uppercase tracking-widest text-white/[0.08] leading-none whitespace-nowrap pr-8 sm:pr-24">
                 FEATURED WORK FEATURED WORK FEATURED WORK
               </span>
             </div>
             <div className="flex items-center flex-shrink-0" aria-hidden="true">
-              <span className="font-orbitron font-black text-[7rem] sm:text-[9.5rem] md:text-[12rem] lg:text-[14rem] xl:text-[16.5rem] uppercase tracking-widest text-white/[0.08] leading-none whitespace-nowrap pr-14 sm:pr-24">
+              <span className="font-orbitron font-black text-[5rem] sm:text-[9.5rem] md:text-[12rem] lg:text-[14rem] xl:text-[16.5rem] uppercase tracking-widest text-white/[0.08] leading-none whitespace-nowrap pr-8 sm:pr-24">
                 FEATURED WORK FEATURED WORK FEATURED WORK
               </span>
             </div>
@@ -226,7 +229,7 @@ export default function PortfolioPreview({ projects: externalProjects }) {
         </div>
 
         {/* Header Text Container */}
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full relative z-10 select-none">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-10 lg:px-14 xl:px-16 w-full relative z-10 select-none">
           <div 
             className={`inline-block relative transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isInView 
@@ -234,16 +237,13 @@ export default function PortfolioPreview({ projects: externalProjects }) {
                 : 'opacity-0 translate-y-8 scale-95'
             }`}
           >
-            <h2 className="font-orbitron font-black text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] 2xl:text-[8.5rem] text-white tracking-wider uppercase leading-none drop-shadow-2xl">
+            <h2 className="font-orbitron font-black text-3xl min-[380px]:text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] 2xl:text-[8.5rem] text-white tracking-wider uppercase leading-none drop-shadow-2xl">
               PROJECTS
             </h2>
-            
-            {/* Glowing Orange Underline */}
-            
           </div>
 
           <p 
-            className={`text-xs sm:text-sm md:text-base text-zinc-400 font-normal mt-4 sm:mt-5 max-w-2xl leading-relaxed transition-all duration-1000 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`text-xs sm:text-sm md:text-base text-zinc-400 font-normal mt-3 sm:mt-5 max-w-2xl leading-relaxed transition-all duration-1000 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isInView 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-5'
@@ -258,15 +258,14 @@ export default function PortfolioPreview({ projects: externalProjects }) {
       <div
         ref={galleryRef}
         className="relative"
-        // Tall container: Scrolling through this distance glides the large full-width image cards sideways
         style={{ height: '350vh' }}
       >
-        <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden z-10">
+        <div className="sticky top-0 h-[90dvh] min-h-[580px] w-full flex items-center overflow-hidden z-10">
           
           {/* Horizontal Track of Large Cinematic Image Cards */}
           <div
             ref={trackRef}
-            className="flex items-center gap-8 sm:gap-12 pl-6 sm:pl-12 lg:pl-16 pr-16 select-none"
+            className="flex items-center gap-5 sm:gap-8 md:gap-12 pl-4 sm:pl-12 lg:pl-16 pr-10 sm:pr-16 select-none"
             style={{
               transform: `translate3d(${translateX}px, 0, 0)`,
               willChange: 'transform',
@@ -286,35 +285,35 @@ export default function PortfolioPreview({ projects: externalProjects }) {
                       : 'scale-[0.94] opacity-40 hover:opacity-85'
                   }`}
                   style={{
-                    // Full-width & large card height taking advantage of viewport while ensuring bottom HUD card is 100% visible
-                    height: 'clamp(240px, 52vh, 640px)',
+                    // Height is proportional across mobile (220px-340px) up to 640px on desktop
+                    height: 'clamp(210px, 44vh, 620px)',
                     aspectRatio: '16 / 10',
                   }}
                 >
                   {/* Cyberpunk Outer Frame with Chamfered Tech Corners */}
                   <div
-                    className={`relative w-full h-full p-2.5 sm:p-4 rounded-3xl transition-all duration-500 bg-[#0d0e12] border ${
+                    className={`relative w-full h-full p-2 sm:p-3.5 md:p-4 rounded-2xl sm:rounded-3xl transition-all duration-500 bg-[#0d0e12] border ${
                       isActive
-                        ? 'border-[#FF5E1E] shadow-[0_0_50px_rgba(255,94,30,0.4)] ring-1 ring-[#FF5E1E]/60'
+                        ? 'border-[#FF5E1E] shadow-[0_0_40px_rgba(255,94,30,0.35)] ring-1 ring-[#FF5E1E]/60'
                         : 'border-white/10 hover:border-white/20'
                     }`}
                     style={{
                       clipPath:
-                        'polygon(32px 0, calc(100% - 32px) 0, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0 calc(100% - 32px), 0 32px)',
+                        'polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px)',
                     }}
                   >
                     {/* Cyber Corner Reticle Notches */}
-                    <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#FF5E1E] pointer-events-none" />
-                    <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#FF5E1E] pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#FF5E1E] pointer-events-none" />
-                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#FF5E1E] pointer-events-none" />
+                    <div className="absolute top-0 left-0 w-6 sm:w-8 h-6 sm:h-8 border-t-2 border-l-2 border-[#FF5E1E] pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-6 sm:w-8 h-6 sm:h-8 border-t-2 border-r-2 border-[#FF5E1E] pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-6 sm:w-8 h-6 sm:h-8 border-b-2 border-l-2 border-[#FF5E1E] pointer-events-none" />
+                    <div className="absolute bottom-0 right-0 w-6 sm:w-8 h-6 sm:h-8 border-b-2 border-r-2 border-[#FF5E1E] pointer-events-none" />
 
                     {/* High Resolution Project Screenshot */}
                     <div 
-                      className="relative w-full h-full rounded-2xl overflow-hidden bg-[#131418]"
+                      className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#131418]"
                       style={{
                         clipPath:
-                          'polygon(22px 0, calc(100% - 22px) 0, 100% 22px, 100% calc(100% - 22px), calc(100% - 22px) 100%, 22px 100%, 0 calc(100% - 22px), 0 22px)',
+                          'polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px)',
                       }}
                     >
                       <img
@@ -327,10 +326,15 @@ export default function PortfolioPreview({ projects: externalProjects }) {
                       {/* Gradient Overlay for Cinematic Depth */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
 
-                        
+                      {/* Top Status Badge inside image */}
+                      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 flex items-center gap-2">
+                        <span className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-[11px] font-mono uppercase tracking-wider font-semibold bg-black/75 backdrop-blur-md border border-[#FF5E1E]/50 text-[#FF5E1E]">
+                          {project.year} • {project.code}
+                        </span>
+                      </div>
 
-                      {/* Bottom-Right Image Title Pill */}
-                      <div className="absolute bottom-5 right-6 z-10 hidden sm:block">
+                      {/* Bottom-Right Image Title Pill (Desktop/Tablet) */}
+                      <div className="absolute bottom-4 right-5 sm:bottom-5 sm:right-6 z-10 hidden sm:block">
                         <span className="text-sm sm:text-base font-orbitron font-bold text-white tracking-wide uppercase drop-shadow-lg">
                           {project.title}
                         </span>
@@ -347,15 +351,15 @@ export default function PortfolioPreview({ projects: externalProjects }) {
             className="absolute bottom-3 sm:bottom-6 md:bottom-8 left-3 sm:left-8 lg:left-12 z-30 w-[calc(100%-1.5rem)] sm:w-auto sm:max-w-lg md:max-w-xl p-3 sm:p-5 md:p-6 rounded-2xl bg-[#0f1015]/95 backdrop-blur-xl border border-[#FF5E1E]/40 shadow-2xl shadow-[#FF5E1E]/20 select-none transition-all duration-500 max-h-[44vh] sm:max-h-none overflow-y-auto"
             style={{
               clipPath:
-                'polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px)',
+                'polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px)',
             }}
           >
             {/* Corner accents */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#FF5E1E]" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#FF5E1E]" />
+            <div className="absolute top-0 left-0 w-3.5 sm:w-4 h-3.5 sm:h-4 border-t-2 border-l-2 border-[#FF5E1E]" />
+            <div className="absolute bottom-0 right-0 w-3.5 sm:w-4 h-3.5 sm:h-4 border-b-2 border-r-2 border-[#FF5E1E]" />
 
             {/* Top Row: Category + Project Code + Year + Mobile Counter */}
-            <div className="flex items-center justify-between gap-3 pb-1.5 border-b border-white/10 mb-2 text-[10px] sm:text-[11px] font-mono tracking-wider">
+            <div className="flex items-center justify-between gap-2.5 pb-1 sm:pb-1.5 border-b border-white/10 mb-1.5 sm:mb-2 text-[9px] sm:text-[11px] font-mono tracking-wider">
               <span className="text-[#FF5E1E] uppercase font-semibold truncate">
                 // {currentProject.category}
               </span>
@@ -370,24 +374,24 @@ export default function PortfolioPreview({ projects: externalProjects }) {
             </div>
 
             {/* Project Title */}
-            <h3 className="font-orbitron font-bold text-lg sm:text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            <h3 className="font-orbitron font-bold text-base sm:text-xl md:text-2xl text-white tracking-wide uppercase leading-snug sm:leading-tight">
               {currentProject.title}
             </h3>
 
             {/* Project Description */}
-            <p className="text-xs sm:text-sm text-zinc-300 font-normal mt-1.5 sm:mt-2 leading-relaxed line-clamp-2 sm:line-clamp-3">
+            <p className="text-[11px] sm:text-xs md:text-sm text-zinc-300 font-normal mt-1 sm:mt-2 leading-relaxed line-clamp-2 sm:line-clamp-3">
               {currentProject.description}
             </p>
 
             {/* Tech Tags Row + Open Case Study CTA Button */}
-            <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 mt-3 sm:mt-4 pt-2 sm:pt-2.5 border-t border-white/10">
+            <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 mt-2.5 sm:mt-4 pt-2 sm:pt-2.5 border-t border-white/10">
               
               {/* Tech Pills */}
-              <div className="flex flex-wrap gap-1 sm:gap-2">
+              <div className="flex flex-wrap gap-1 sm:gap-1.5 max-h-12 overflow-hidden">
                 {currentProject.tags.map((tag, tIdx) => (
                   <span
                     key={tIdx}
-                    className="px-2 sm:px-2.5 py-0.5 rounded bg-white/5 border border-[#FF5E1E]/30 text-[9px] sm:text-[10px] font-mono font-medium text-zinc-300 uppercase tracking-wider"
+                    className="px-2 sm:px-2.5 py-0.5 rounded bg-white/5 border border-[#FF5E1E]/30 text-[8px] sm:text-[10px] font-mono font-medium text-zinc-300 uppercase tracking-wider"
                   >
                     {tag}
                   </span>
@@ -398,14 +402,14 @@ export default function PortfolioPreview({ projects: externalProjects }) {
               {!currentProject.isClientWork ? (
                 <a
                   href={currentProject.link || '#'}
-                  className="group inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded bg-[#FF5E1E] hover:bg-[#ff723b] text-white text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg shadow-[#FF5E1E]/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                  className="group inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded bg-[#FF5E1E] hover:bg-[#ff723b] text-white text-[9px] sm:text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg shadow-[#FF5E1E]/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex-shrink-0"
                 >
                   <span>OPEN CASE STUDY</span>
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:rotate-45 transition-transform" />
                 </a>
               ) : (
                 <div
-                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded bg-white/5 border border-white/10 text-zinc-500 text-[9px] sm:text-[10px] font-mono uppercase tracking-wider cursor-not-allowed select-none"
+                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded bg-white/5 border border-white/10 text-zinc-500 text-[8px] sm:text-[10px] font-mono uppercase tracking-wider cursor-not-allowed select-none flex-shrink-0"
                   title="Office client project"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-zinc-600" />
@@ -414,8 +418,8 @@ export default function PortfolioPreview({ projects: externalProjects }) {
               )}
             </div>
 
-            {/* Micro-telemetry Status at bottom (Full line cleanly displayed) */}
-            <div className="pt-1.5 sm:pt-2 mt-1.5 sm:mt-2 border-t border-white/5 text-[9px] font-mono text-zinc-500 tracking-widest uppercase truncate">
+            {/* Micro-telemetry Status at bottom (No GPS/Lat/Long) */}
+            <div className="pt-1 sm:pt-1.5 mt-1 sm:mt-1.5 border-t border-white/5 text-[8px] sm:text-[9px] font-mono text-zinc-500 tracking-widest uppercase truncate">
               // {currentProject.telemetry}
             </div>
           </div>
@@ -429,7 +433,7 @@ export default function PortfolioPreview({ projects: externalProjects }) {
               <div className="w-10 h-[1px] bg-zinc-700" />
             </div>
 
-            {/* Counter matching screenshot 9a35e429 */}
+            {/* Counter */}
             <div className="font-orbitron font-bold text-2xl sm:text-3xl md:text-4xl tracking-widest text-zinc-500 bg-black/50 backdrop-blur-md px-4 py-1.5 rounded-xl border border-white/10">
               <span className="text-[#FF5E1E]">
                 {String(activeProjectIndex + 1).padStart(2, '0')}

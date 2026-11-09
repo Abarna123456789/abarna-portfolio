@@ -216,40 +216,38 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="pt-16 sm:pt-24 pb-12 sm:pb-20 bg-[#08080a] relative overflow-hidden border-t border-white/5"
+      className="pt-12 sm:pt-20 lg:pt-24 pb-12 sm:pb-20 bg-[#08080a] relative overflow-hidden border-t border-white/5"
     >
-      {/* Background ambient lighting matching cosmic theme */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#FF5E1E]/8 rounded-full blur-[170px] pointer-events-none -z-10" />
-      <div className="absolute top-1/2 right-10 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px] pointer-events-none -z-10" />
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/4 left-1/4 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-[#FF5E1E]/8 rounded-full blur-[170px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 right-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-cyan-500/5 rounded-full blur-[160px] pointer-events-none -z-10" />
 
-      {/* ─── SLOW & SILKY SMOOTH SCROLLING GHOST WATERMARK DIRECTLY BEHIND SKILLS TITLE ─── */}
+      {/* ─── SLOW SCROLLING GHOST WATERMARK ─── */}
       <div 
-        className={`w-full overflow-hidden select-none pointer-events-none absolute inset-x-0 top-10 sm:top-14 md:top-16 lg:top-16 xl:top-20 z-0 transition-opacity duration-1000 ${
+        className={`w-full overflow-hidden select-none pointer-events-none absolute inset-x-0 top-6 sm:top-14 md:top-16 lg:top-20 z-0 transition-opacity duration-1000 ${
           isInView ? 'opacity-100' : 'opacity-0'
         }`}
         style={{ willChange: 'transform' }}
       >
         <div className="flex w-max animate-marquee-slower">
           <div className="flex items-center flex-shrink-0">
-            <span className="font-orbitron font-black text-[7rem] sm:text-[9.5rem] md:text-[12rem] lg:text-[14rem] xl:text-[16.5rem] uppercase tracking-widest text-white/[0.08] leading-none whitespace-nowrap pr-14 sm:pr-24">
+            <span className="font-orbitron font-black text-[5rem] sm:text-[9.5rem] md:text-[12rem] lg:text-[14rem] xl:text-[16.5rem] uppercase tracking-widest text-white/[0.08] leading-none whitespace-nowrap pr-14 sm:pr-24">
               EXPERTISE TECHNICAL EXPERTISE TECHNICAL EXPERTISE TECHNICAL
             </span>
           </div>
           <div className="flex items-center flex-shrink-0" aria-hidden="true">
-            <span className="font-orbitron font-black text-[7rem] sm:text-[9.5rem] md:text-[12rem] lg:text-[14rem] xl:text-[16.5rem] uppercase tracking-widest text-white/[0.08] leading-none whitespace-nowrap pr-14 sm:pr-24">
+            <span className="font-orbitron font-black text-[5rem] sm:text-[9.5rem] md:text-[12rem] lg:text-[14rem] xl:text-[16.5rem] uppercase tracking-widest text-white/[0.08] leading-none whitespace-nowrap pr-14 sm:pr-24">
               EXPERTISE TECHNICAL EXPERTISE TECHNICAL EXPERTISE TECHNICAL
             </span>
           </div>
         </div>
       </div>
 
-      {/* Unified container matching Navbar & Hero */}
-      <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full relative z-10">
+      {/* Unified container matching Navbar, Hero & Experience */}
+      <div className="max-w-[1600px] mx-auto px-4 min-[380px]:px-5 sm:px-10 lg:px-14 xl:px-16 w-full relative z-10">
         
         {/* ─── TOP HEADER ─── */}
-        <div className="pb-12 sm:pb-16 border-b border-white/10">
-          
-          {/* SKILLS in Orbitron typography + Cyan Underline + Subtitle */}
+        <div className="pb-8 sm:pb-14 border-b border-white/10">
           <div className="text-left select-none">
             
             {/* Enlarged Headline with Smooth Entrance Popup Reveal */}
@@ -260,17 +258,14 @@ export default function Skills() {
                   : 'opacity-0 translate-y-8 scale-95'
               }`}
             >
-              <h2 className="font-orbitron font-black text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] 2xl:text-[8.5rem] text-white tracking-wider uppercase leading-none drop-shadow-2xl">
+              <h2 className="font-orbitron font-black text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] 2xl:text-[8.5rem] text-white tracking-wider uppercase leading-none drop-shadow-2xl">
                 SKILLS
               </h2>
-              
-              {/* Cyan Accent Glow Underline */}
-              
             </div>
 
-            {/* Exact Subtitle with Smooth Entrance Reveal */}
+            {/* Subtitle with Smooth Reveal */}
             <p 
-              className={`text-xs sm:text-sm md:text-base text-zinc-400 font-normal mt-4 sm:mt-5 max-w-2xl leading-relaxed transition-all duration-1000 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`text-xs sm:text-sm md:text-base text-zinc-400 font-normal mt-3 sm:mt-5 max-w-2xl leading-relaxed transition-all duration-1000 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isInView 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-5'
@@ -279,7 +274,6 @@ export default function Skills() {
               Ten core technical disciplines, foundation to deployment. Nobody ever finishes a language, these are the domains I keep sharpening.
             </p>
           </div>
-
         </div>
 
         {/* ─── 10 INTERACTIVE SKILLS ROWS ─── */}
@@ -294,20 +288,33 @@ export default function Skills() {
               <div
                 key={skill.id}
                 onMouseEnter={() => setHoveredSkill(skill.id)}
-                className="group py-12 sm:py-16 transition-colors duration-300 relative select-none"
+                className="group py-7 sm:py-12 lg:py-16 transition-colors duration-300 relative select-none"
               >
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-14 xl:gap-16">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-8 lg:gap-14 xl:gap-16">
                   
-                  {/* Left Column: Number + Arrow Line (01 ──────────→) & Enriched Preview Card */}
+                  {/* Left Column: Number + Arrow Indicator & Desktop Hover Preview Card */}
                   <div className="w-full lg:w-[350px] xl:w-[390px] flex-shrink-0">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="font-giant text-xl sm:text-2xl text-white tracking-wider">
-                        {skill.id}
-                      </span>
-                      <div className="flex items-center w-28 sm:w-36">
-                        <div className="w-full h-[1px] bg-zinc-700/80"></div>
-                        <span className="text-zinc-500 text-xs -ml-1">→</span>
+                    
+                    {/* Top Row: Number indicator + Mobile Quick Action Arrow (Prevents title overlap) */}
+                    <div className="flex items-center justify-between gap-4 mb-2 sm:mb-4">
+                      <div className="flex items-center gap-2.5 sm:gap-3">
+                        <span className="font-giant text-lg sm:text-2xl text-white tracking-wider">
+                          {skill.id}
+                        </span>
+                        <div className="flex items-center w-20 min-[380px]:w-28 sm:w-36">
+                          <div className="w-full h-[1px] bg-zinc-700/80"></div>
+                          <span className="text-zinc-500 text-xs -ml-1">→</span>
+                        </div>
                       </div>
+
+                      {/* Mobile Arrow Button (Cleanly aligned in top row) */}
+                      <a
+                        href="#portfolio"
+                        className="flex lg:hidden items-center justify-center w-8 h-8 min-[380px]:w-9 min-[380px]:h-9 rounded-full bg-[#FF5E1E] text-white shadow-md shadow-[#FF5E1E]/30 flex-shrink-0 group-hover:rotate-45 transition-transform duration-200"
+                        aria-label={`View projects built with ${skill.title}`}
+                      >
+                        <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+                      </a>
                     </div>
 
                     {/* High-Fidelity Expanded Preview Card on Desktop Hover */}
@@ -471,22 +478,22 @@ export default function Skills() {
                     </div>
                   </div>
 
-                  {/* Middle Column: Giant Title, Subtitle, and Tech Tag Pills */}
+                  {/* Middle Column: Full Width Title, Subtitle & Tech Tag Pills */}
                   <div className="flex-1 text-left flex flex-col justify-center min-w-0">
-                    <h3 className="font-giant text-3xl min-[380px]:text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.5rem] uppercase tracking-wide text-white leading-[0.9] transition-colors break-words pr-12 lg:pr-0">
+                    <h3 className="font-giant text-2xl min-[360px]:text-3xl min-[420px]:text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.5rem] uppercase tracking-wide text-white leading-[0.95] sm:leading-[0.9] transition-colors break-words group-hover:text-[#FF8A50]">
                       {skill.title}
                     </h3>
 
-                    <p className="text-sm sm:text-base text-zinc-300 font-normal mt-3 max-w-2xl leading-relaxed">
+                    <p className="text-xs sm:text-sm md:text-base text-zinc-300/90 font-normal mt-2 sm:mt-3 max-w-2xl leading-relaxed">
                       {skill.subtitle}
                     </p>
 
                     {/* Category Tags Pills */}
-                    <div className="flex flex-wrap gap-2.5 mt-5">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2.5 mt-3 sm:mt-5">
                       {skill.tags.map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="px-3.5 sm:px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-300 font-medium hover:border-[#FF5E1E]/40 hover:text-white transition-colors"
+                          className="px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs text-zinc-300 font-medium hover:border-[#FF5E1E]/40 hover:text-white transition-colors select-none"
                         >
                           {tag}
                         </span>
@@ -510,15 +517,6 @@ export default function Skills() {
                   aria-label={`View projects built with ${skill.title}`}
                 >
                   <ArrowUpRight className="w-6 h-6 xl:w-7 xl:h-7 stroke-[2.5]" />
-                </a>
-
-                {/* MOBILE ARROW */}
-                <a
-                  href="#portfolio"
-                  className="flex lg:hidden items-center justify-center w-11 h-11 rounded-full bg-[#FF5E1E] text-white shadow-lg shadow-[#FF5E1E]/30 absolute top-8 right-2 pointer-events-auto"
-                  aria-label={`View projects built with ${skill.title}`}
-                >
-                  <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
                 </a>
 
               </div>

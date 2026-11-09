@@ -10,7 +10,6 @@ import {
   Mail,
   Clock,
   Sparkles,
-  Phone,
 } from 'lucide-react';
 import { submitContactForm } from '../../lib/api';
 
@@ -41,7 +40,7 @@ export default function ContactSection() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Dropdown options strictly matching screenshot b7ca6c03
+  // Dropdown options
   const subjectOptions = [
     'Job Opportunity',
     'Freelance Project',
@@ -107,65 +106,65 @@ Looking forward to connecting with you!`;
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-28 bg-[#08080a] relative overflow-hidden select-none border-t border-white/5">
+    <section id="contact" className="py-12 sm:py-20 lg:py-28 bg-[#08080a] relative overflow-hidden select-none border-t border-white/5">
       {/* Ambient Cosmic Background Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[850px] h-[380px] bg-gradient-to-t from-[#FF5E1E]/20 via-[#FF4500]/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/4 left-10 w-[450px] h-[450px] bg-[#FF5E1E]/6 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[350px] sm:w-[650px] md:w-[850px] h-[250px] sm:h-[380px] bg-gradient-to-t from-[#FF5E1E]/20 via-[#FF4500]/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-10 w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] bg-[#FF5E1E]/6 rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 min-[380px]:px-5 sm:px-10 lg:px-14 xl:px-16 w-full relative z-10">
         
         {/* Split Layout: Text on Left Side, Form on Right Side */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-start">
           
           {/* ─── LEFT SIDE: HEADING & DETAILS ─── */}
-          <div className="lg:col-span-5 space-y-8">
+          <div className="lg:col-span-5 space-y-6 sm:space-y-8">
             
             {/* Top pill badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-[#FF7A45] tracking-widest uppercase shadow-lg shadow-[#FF5E1E]/10">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs font-semibold text-[#FF7A45] tracking-widest uppercase shadow-lg shadow-[#FF5E1E]/10">
               <Sparkles className="w-3.5 h-3.5 text-[#FF5E1E]" />
               <span>Start Your Project</span>
             </div>
 
             {/* Giant Heading */}
             <div>
-              <h2 className="font-giant text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] text-white uppercase tracking-wide leading-[0.95]">
+              <h2 className="font-giant text-3xl min-[360px]:text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] text-white uppercase tracking-wide leading-[0.95] break-words">
                 Have an Idea? <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
                   Let&apos;s Build It Together
                 </span>
               </h2>
 
-              <p className="text-sm sm:text-base text-zinc-400 font-normal leading-relaxed mt-5 max-w-md">
+              <p className="text-xs sm:text-sm md:text-base text-zinc-400 font-normal leading-relaxed mt-3 sm:mt-5 max-w-md">
                 Whether you need a cutting-edge web application, technical SEO audit, high-converting redesign, or complete full-stack development — let&apos;s turn your vision into digital reality.
               </p>
             </div>
 
             {/* Direct Value Perks */}
-            <div className="space-y-3.5 pt-2 border-t border-white/10">
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-zinc-300">
-                <span className="text-[#FF5E1E] font-bold text-base flex-shrink-0">✓</span>
+            <div className="space-y-2.5 sm:space-y-3.5 pt-2 border-t border-white/10">
+              <div className="flex items-start sm:items-center gap-2.5 sm:gap-3 text-xs sm:text-sm text-zinc-300">
+                <span className="text-[#FF5E1E] font-bold text-sm sm:text-base flex-shrink-0 mt-0.5 sm:mt-0">✓</span>
                 <span>Direct collaboration with zero middleman friction</span>
               </div>
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-zinc-300">
-                <span className="text-[#FF5E1E] font-bold text-base flex-shrink-0">✓</span>
+              <div className="flex items-start sm:items-center gap-2.5 sm:gap-3 text-xs sm:text-sm text-zinc-300">
+                <span className="text-[#FF5E1E] font-bold text-sm sm:text-base flex-shrink-0 mt-0.5 sm:mt-0">✓</span>
                 <span>Production-ready code optimized for speed & Google rankings</span>
               </div>
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-zinc-300">
-                <span className="text-[#FF5E1E] font-bold text-base flex-shrink-0">✓</span>
+              <div className="flex items-start sm:items-center gap-2.5 sm:gap-3 text-xs sm:text-sm text-zinc-300">
+                <span className="text-[#FF5E1E] font-bold text-sm sm:text-base flex-shrink-0 mt-0.5 sm:mt-0">✓</span>
                 <span>Guaranteed on-time milestone delivery</span>
               </div>
             </div>
 
             {/* Direct Contact Perks */}
-            <div className="pt-2 space-y-3">
+            <div className="pt-1 sm:pt-2 space-y-2.5 sm:space-y-3">
               <a
                 href="mailto:abarnaezhumalai2002@gmail.com"
-                className="flex items-center gap-3.5 text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors group break-all"
+                className="flex items-center gap-3 text-xs sm:text-sm text-zinc-400 hover:text-white transition-colors group break-all"
               >
-                <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-[#FF5E1E] flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
-                  <Mail className="w-4 h-4" />
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white/5 border border-white/10 text-[#FF5E1E] flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
+                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
-                <span>abarnaezhumalai2002@gmail.com</span>
+                <span className="break-all font-mono">abarnaezhumalai2002@gmail.com</span>
               </a>
 
               <div className="flex items-center gap-2.5 text-xs text-zinc-400 font-mono pt-1">
@@ -176,18 +175,18 @@ Looking forward to connecting with you!`;
 
           </div>
 
-          {/* ─── RIGHT SIDE: CONTACT FORM (With Requested Fields) ─── */}
+          {/* ─── RIGHT SIDE: CONTACT FORM ─── */}
           <div className="lg:col-span-7 w-full min-w-0">
-            <div className="p-4 min-[400px]:p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-[#0d0e12] border border-white/10 shadow-2xl relative">
+            <div className="p-4 sm:p-7 md:p-9 lg:p-10 rounded-2xl sm:rounded-3xl bg-[#0d0e12] border border-white/10 shadow-2xl relative">
               {/* Subtle top inner orange rim glow */}
               <div className="absolute top-0 inset-x-10 h-[1px] bg-gradient-to-r from-transparent via-[#FF5E1E]/60 to-transparent" />
 
               {/* Form Card Header */}
-              <div className="mb-7">
-                <h3 className="font-sans font-bold text-2xl sm:text-3xl text-white tracking-tight">
+              <div className="mb-5 sm:mb-7">
+                <h3 className="font-sans font-bold text-xl min-[360px]:text-2xl sm:text-3xl text-white tracking-tight">
                   Let&apos;s Work Together
                 </h3>
-                <p className="text-zinc-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
+                <p className="text-zinc-400 text-xs sm:text-sm mt-1 sm:mt-1.5 leading-relaxed">
                   Have a project in mind or an opportunity to discuss? Feel free to get in touch.
                 </p>
               </div>
@@ -195,24 +194,24 @@ Looking forward to connecting with you!`;
               {/* Status Alert */}
               {formStatus && (
                 <div
-                  className={`mb-6 p-4 rounded-2xl text-sm font-medium flex items-center gap-2.5 ${
+                  className={`mb-5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-medium flex items-center gap-2.5 ${
                     formStatus.type === 'success'
                       ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400'
                       : 'bg-red-500/10 border border-red-500/30 text-red-400'
                   }`}
                 >
                   {formStatus.type === 'success' ? (
-                    <CheckCheck className="w-5 h-5 flex-shrink-0" />
+                    <CheckCheck className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                   ) : null}
                   <span>{formStatus.message}</span>
                 </div>
               )}
 
-              <form onSubmit={handleFormSubmit} className="space-y-5">
+              <form onSubmit={handleFormSubmit} className="space-y-4 sm:space-y-5">
                 
                 {/* 1. Full Name * */}
                 <div>
-                  <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-1.5 sm:mb-2">
                     Full Name *
                   </label>
                   <input
@@ -221,14 +220,14 @@ Looking forward to connecting with you!`;
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Enter your full name"
-                    className="w-full bg-[#050507] border border-zinc-800 rounded-full px-5 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] transition-all"
+                    className="w-full bg-[#050507] border border-zinc-800 rounded-full px-4 sm:px-5 py-2.5 sm:py-3.5 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] transition-all"
                   />
                 </div>
 
                 {/* 2. Email Address * & Phone (Side-by-side on sm+) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-1.5 sm:mb-2">
                       Email Address *
                     </label>
                     <input
@@ -237,33 +236,33 @@ Looking forward to connecting with you!`;
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="Enter your email address"
-                      className="w-full bg-[#050507] border border-zinc-800 rounded-full px-5 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] transition-all"
+                      className="w-full bg-[#050507] border border-zinc-800 rounded-full px-4 sm:px-5 py-2.5 sm:py-3.5 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-1.5 sm:mb-2">
                       Phone Number
                     </label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="Enter your phone number (optional)"
-                      className="w-full bg-[#050507] border border-zinc-800 rounded-full px-5 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] transition-all"
+                      placeholder="Enter phone number (optional)"
+                      className="w-full bg-[#050507] border border-zinc-800 rounded-full px-4 sm:px-5 py-2.5 sm:py-3.5 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] transition-all"
                     />
                   </div>
                 </div>
 
-                {/* 3. Subject * (Interactive Dropdown matching screenshot b7ca6c03) */}
+                {/* 3. Subject * (Interactive Dropdown) */}
                 <div className="relative" ref={dropdownRef}>
-                  <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-1.5 sm:mb-2">
                     Subject *
                   </label>
                   <button
                     type="button"
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="w-full bg-[#050507] border border-zinc-800 rounded-full px-5 py-3.5 text-sm text-white focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] flex items-center justify-between transition-all cursor-pointer"
+                    className="w-full bg-[#050507] border border-zinc-800 rounded-full px-4 sm:px-5 py-2.5 sm:py-3.5 text-xs sm:text-sm text-white focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] flex items-center justify-between transition-all cursor-pointer"
                   >
                     <span>{formData.subject}</span>
                     <ChevronDown
@@ -273,9 +272,9 @@ Looking forward to connecting with you!`;
                     />
                   </button>
 
-                  {/* Dropdown Menu Popover matching screenshot b7ca6c03 */}
+                  {/* Dropdown Menu Popover */}
                   {isDropdownOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-[#141417] border border-zinc-800 rounded-2xl p-2 shadow-2xl backdrop-blur-xl animate-in fade-in-0 zoom-in-95 duration-150 max-h-60 overflow-y-auto">
+                    <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-[#141417] border border-zinc-800 rounded-2xl p-1.5 sm:p-2 shadow-2xl backdrop-blur-xl animate-in fade-in-0 zoom-in-95 duration-150 max-h-56 sm:max-h-60 overflow-y-auto">
                       {subjectOptions.map((option) => {
                         const isSelected = formData.subject === option;
 
@@ -286,7 +285,7 @@ Looking forward to connecting with you!`;
                               setFormData({ ...formData, subject: option });
                               setIsDropdownOpen(false);
                             }}
-                            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm cursor-pointer transition-colors ${
+                            className={`flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm cursor-pointer transition-colors ${
                               isSelected
                                 ? 'bg-zinc-800/90 text-white font-medium'
                                 : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'
@@ -294,7 +293,7 @@ Looking forward to connecting with you!`;
                           >
                             <span className="w-4 flex items-center justify-center">
                               {isSelected ? (
-                                <Check className="w-4 h-4 text-[#FF5E1E] stroke-[2.5]" />
+                                <Check className="w-3.5 h-3.5 text-[#FF5E1E] stroke-[2.5]" />
                               ) : null}
                             </span>
                             <span>{option}</span>
@@ -307,7 +306,7 @@ Looking forward to connecting with you!`;
 
                 {/* 4. Your Message * */}
                 <div>
-                  <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-zinc-300 mb-1.5 sm:mb-2">
                     Your Message *
                   </label>
                   <textarea
@@ -316,27 +315,27 @@ Looking forward to connecting with you!`;
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell me about your project or opportunity..."
-                    className="w-full bg-[#050507] border border-zinc-800 rounded-2xl p-4 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] transition-all resize-none"
+                    className="w-full bg-[#050507] border border-zinc-800 rounded-2xl p-3.5 sm:p-4 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF5E1E] focus:ring-1 focus:ring-[#FF5E1E] transition-all resize-none"
                   />
                 </div>
 
                 {/* Quick Copy Sample Enquiry Action Button */}
-                <div className="flex items-center justify-center pt-1">
+                <div className="flex items-center justify-center pt-0.5 sm:pt-1">
                   <button
                     type="button"
                     onClick={handleCopySample}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono font-medium text-zinc-400 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/5 transition-all active:scale-95"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-mono font-medium text-zinc-400 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/5 transition-all active:scale-95 text-center"
                   >
                     {copiedSample ? (
                       <>
-                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                         <span className="text-emerald-400 font-semibold">
                           Sample enquiry inserted & copied!
                         </span>
                       </>
                     ) : (
                       <>
-                        <Copy className="w-3.5 h-3.5 text-[#FF5E1E]" />
+                        <Copy className="w-3.5 h-3.5 text-[#FF5E1E] flex-shrink-0" />
                         <span>Copy sample enquiry</span>
                       </>
                     )}
@@ -347,20 +346,20 @@ Looking forward to connecting with you!`;
                 <button
                   type="submit"
                   disabled={formSubmitting}
-                  className="w-full py-4 rounded-full bg-[#FF5E1E] hover:bg-[#ff723b] text-white font-bold text-sm tracking-wide uppercase shadow-xl shadow-[#FF5E1E]/30 hover:shadow-[#FF5E1E]/50 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+                  className="w-full py-3.5 sm:py-4 rounded-full bg-[#FF5E1E] hover:bg-[#ff723b] text-white font-bold text-xs sm:text-sm tracking-wide uppercase shadow-xl shadow-[#FF5E1E]/30 hover:shadow-[#FF5E1E]/50 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
                 >
                   {formSubmitting ? (
                     <span>Sending Inquiry...</span>
                   ) : (
                     <>
                       <span>Send Message</span>
-                      <Send className="w-4 h-4" />
+                      <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </>
                   )}
                 </button>
 
                 {/* Disclaimer Notice */}
-                <p className="text-center text-[11px] font-mono text-zinc-500 tracking-wide pt-1">
+                <p className="text-center text-[10px] min-[360px]:text-[11px] font-mono text-zinc-500 tracking-wide pt-0.5 sm:pt-1">
                   Portfolio enquiries only. Spam / automated marketing pitches will not be entertained.
                 </p>
 

@@ -7,6 +7,14 @@ export const metadata = {
   description: 'Websites that turn visitors into clients. High-converting UI/UX design, Next.js web development, and digital experiences.',
   keywords: ['Portfolio', 'Abarna E', 'Web Designer', 'UI UX Designer', 'Next.js Developer', 'Frontend Engineer'],
   authors: [{ name: 'Abarna E' }],
+  icons: {
+    icon: [
+      { url: '/images/fav-icon.png', type: 'image/png' },
+      { url: '/fav-icon.ico', type: 'image/x-icon' },
+    ],
+    shortcut: '/images/fav-icon.png',
+    apple: '/images/fav-icon.png',
+  },
   openGraph: {
     title: 'Abarna E — Portfolio',
     description: 'Websites that turn visitors into clients. 1+ Years of Experience, 200+ Deliveries.',

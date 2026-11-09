@@ -42,7 +42,7 @@ export default function Hero({ profile }) {
   return (
     <section
       ref={heroRef}
-      className="relative pt-28 sm:pt-36 md:pt-40 lg:pt-44 pb-12 sm:pb-16 overflow-hidden cosmic-hero-bg stars-overlay select-none"
+      className="relative pt-24 sm:pt-36 md:pt-40 lg:pt-44 pb-12 sm:pb-16 overflow-hidden cosmic-hero-bg stars-overlay select-none"
     >
       {/* Ambient background glow orbs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[1050px] h-[380px] sm:h-[600px] bg-gradient-to-b from-[#FF5E1E]/30 via-[#FF4500]/10 to-transparent rounded-full blur-[140px] pointer-events-none -z-10" />
@@ -51,18 +51,18 @@ export default function Hero({ profile }) {
       <div className="w-full relative z-10">
         
         {/* "Hi, I am" sitting on the top-left directly above the name with clean breathing room */}
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full text-left mb-3 sm:mb-4">
-          <span className="text-sm sm:text-base md:text-lg font-medium text-zinc-300 tracking-wide font-sans">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-10 lg:px-14 xl:px-16 w-full text-left mb-2 sm:mb-4">
+          <span className="text-xs sm:text-base md:text-lg font-medium text-zinc-300 tracking-wide font-sans">
             Hi, I am
           </span>
         </div>
 
-        {/* ─── Hero Title & Centered Portrait Centerpiece (Full View Portrait with Layered Depth) ─── */}
-        <div className="relative w-full flex items-center justify-center py-4 sm:py-8">
+        {/* ─── Hero Title & Centered Portrait Centerpiece (Contained & Responsive) ─── */}
+        <div className="relative w-full flex flex-col items-center justify-center min-h-[260px] min-[380px]:min-h-[300px] sm:min-h-[380px] md:min-h-[460px] lg:min-h-[540px] xl:min-h-[580px] py-2 sm:py-6 my-1 sm:my-3">
           
           {/* Giant condensed headline with Spring Pop-up effect on enter */}
           <h1
-            className={`font-giant text-[19vw] sm:text-[21vw] lg:text-[19vw] xl:text-[17.5rem] 2xl:text-[19.5rem] leading-[0.8] tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400 font-extrabold drop-shadow-[0_20px_35px_rgba(0,0,0,0.85)] text-center w-full transition-all duration-1000 ${
+            className={`font-giant text-[18vw] min-[360px]:text-[20vw] min-[400px]:text-[22vw] sm:text-[21vw] lg:text-[19vw] xl:text-[17.5rem] 2xl:text-[19.5rem] leading-[0.85] sm:leading-[0.8] tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400 font-extrabold drop-shadow-[0_20px_35px_rgba(0,0,0,0.85)] text-center w-full select-none z-0 transition-all duration-1000 ${
               isVisible
                 ? 'opacity-100 scale-100 translate-y-0 filter-none'
                 : 'opacity-0 scale-[0.85] translate-y-10 blur-sm'
@@ -74,26 +74,26 @@ export default function Hero({ profile }) {
             {profile?.name || 'ABARNA E'}
           </h1>
 
-          {/* Central Portrait Visual: Centered directly over the headline in Full View */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+          {/* Central Portrait Visual: Positioned with items-end so it frames the name without covering it */}
+          <div className="absolute inset-0 flex items-end justify-center pointer-events-none z-10">
             <div
-              className={`relative w-64 h-80 sm:w-80 sm:h-96 md:w-[390px] md:h-[480px] lg:w-[460px] lg:h-[550px] xl:w-[500px] xl:h-[600px] max-w-[92vw] transition-all duration-1000 delay-150 flex items-center justify-center ${
+              className={`relative w-44 h-60 min-[380px]:w-52 min-[380px]:h-72 sm:w-72 sm:h-96 md:w-[390px] md:h-[480px] lg:w-[460px] lg:h-[550px] xl:w-[500px] xl:h-[600px] max-w-[90vw] transition-all duration-1000 delay-150 flex items-end justify-center ${
                 isVisible
                   ? 'opacity-100 scale-100 translate-y-0'
                   : 'opacity-0 scale-90 translate-y-8'
               }`}
             >
               {/* Warm fiery orange backlight glow directly behind her head / shoulders */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-gradient-to-b from-[#FF5E1E]/50 via-[#FF4500]/25 to-transparent rounded-full blur-3xl -z-10 pointer-events-none" />
+              <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 min-[380px]:w-48 min-[380px]:h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-gradient-to-b from-[#FF5E1E]/50 via-[#FF4500]/25 to-transparent rounded-full blur-2xl sm:blur-3xl -z-10 pointer-events-none" />
 
-              {/* Portrait cutout image in full view with seamless bottom-edge soft blend */}
+              {/* Portrait cutout image with smooth bottom blend */}
               <img
                 src="/images/abarna-profile.webp"
                 alt={profile?.name || 'Abarna E'}
                 className="w-full h-full object-contain object-bottom filter brightness-100 contrast-105 pointer-events-none select-none drop-shadow-[0_15px_30px_rgba(0,0,0,0.85)]"
                 style={{
-                  maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+                  maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
                 }}
               />
             </div>
@@ -101,11 +101,11 @@ export default function Hero({ profile }) {
 
         </div>
 
-        {/* ─── Two-Column Bottom Hero Details (Software Developer & Minimal Tech Stack Card) ─── */}
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-end pt-8 sm:pt-12 w-full">
+        {/* ─── Two-Column Bottom Hero Details ─── */}
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-10 lg:px-14 xl:px-16 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-end pt-6 sm:pt-10 w-full">
             
-            {/* Left Column: Software Developer + MERN Full Stack Developer / SEO Analyst + Action Buttons */}
+            {/* Left Column: Software Developer + MERN Full Stack / SEO + One-Row Buttons */}
             <div className="space-y-4 sm:space-y-5 text-left w-full min-w-0">
               {/* Category Subtitle */}
               <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-widest text-zinc-400 uppercase">
@@ -124,23 +124,23 @@ export default function Hero({ profile }) {
                 I build modern digital experiences that combine development, AI, design and search visibility.
               </p>
 
-              {/* Buttons: VIEW MY WORK -> & LET'S CONNECT */}
-              <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
+              {/* Action Buttons: Neatly arranged in ONE ROW on mobile */}
+              <div className="pt-2 sm:pt-3 flex flex-row items-center gap-2.5 sm:gap-4 w-full">
                 <a
                   href="#portfolio"
-                  className="group inline-flex items-center gap-2.5 sm:gap-3 bg-[#FF5E1E] hover:bg-[#ff723b] pl-5 sm:pl-7 pr-2 sm:pr-2.5 py-2.5 sm:py-3 rounded-full shadow-xl shadow-[#FF5E1E]/30 hover:shadow-[#FF5E1E]/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                  className="group flex-1 sm:flex-initial inline-flex items-center justify-between sm:justify-start gap-2 sm:gap-3 bg-[#FF5E1E] hover:bg-[#ff723b] pl-3.5 sm:pl-7 pr-1.5 sm:pr-2.5 py-2.5 sm:py-3 rounded-full shadow-xl shadow-[#FF5E1E]/30 hover:shadow-[#FF5E1E]/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
                 >
-                  <span className="text-white font-bold text-xs sm:text-sm tracking-wider uppercase">
+                  <span className="text-white font-bold text-[11px] min-[360px]:text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap">
                     VIEW MY WORK
                   </span>
-                  <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white flex items-center justify-center text-[#FF5E1E] group-hover:translate-x-0.5 transition-transform duration-300 shadow">
-                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                  <span className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white flex items-center justify-center text-[#FF5E1E] group-hover:translate-x-0.5 transition-transform duration-300 shadow flex-shrink-0">
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 stroke-[2.5]" />
                   </span>
                 </a>
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center px-5 sm:px-7 py-2.5 sm:py-3 rounded-full border border-white/20 hover:border-white/50 bg-white/5 hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider uppercase backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98] transition-all"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center px-3.5 sm:px-7 py-2.5 sm:py-3 rounded-full border border-white/20 hover:border-white/50 bg-white/5 hover:bg-white/10 text-white font-bold text-[11px] min-[360px]:text-xs sm:text-sm tracking-wider uppercase backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
                 >
                   LET&apos;S CONNECT
                 </a>
@@ -206,14 +206,14 @@ export default function Hero({ profile }) {
       </div>
 
       {/* Infinite Horizontal Running 10-Word Ticker */}
-      <div className="mt-16 sm:mt-24 border-y border-white/10 bg-black/90 backdrop-blur-md py-4 sm:py-6 overflow-hidden relative select-none">
+      <div className="mt-12 sm:mt-20 md:mt-24 border-y border-white/10 bg-black/90 backdrop-blur-md py-3.5 sm:py-6 overflow-hidden relative select-none">
         <div className="flex whitespace-nowrap animate-marquee">
           {[...statsTicker, ...statsTicker].map((stat, idx) => (
-            <div key={idx} className="flex items-center mx-4 sm:mx-8">
-              <span className="text-[#FF5E1E] text-2xl sm:text-4xl lg:text-5xl mr-4 sm:mr-8 drop-shadow-[0_0_15px_rgba(255,94,30,0.85)]">
+            <div key={idx} className="flex items-center mx-3 sm:mx-8">
+              <span className="text-[#FF5E1E] text-xl sm:text-4xl lg:text-5xl mr-3 sm:mr-8 drop-shadow-[0_0_15px_rgba(255,94,30,0.85)]">
                 ✦
               </span>
-              <span className="font-giant text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-wide text-white uppercase leading-none">
+              <span className="font-giant text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-wide text-white uppercase leading-none">
                 {stat}
               </span>
             </div>

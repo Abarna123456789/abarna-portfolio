@@ -126,34 +126,25 @@ export default function Footer({ profile }) {
 
         {/* Bottom Bar: Social Icons on Left, Copyright + Back-to-Top on Right */}
         <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
-          {/* Social Icons matching screenshot: in, Bē, Dribbble */}
+          {/* Social Icons: LinkedIn & WhatsApp */}
           <div className="flex items-center gap-2.5">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/abarna-e/"
               target="_blank"
               rel="noreferrer"
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white text-zinc-300 hover:text-black flex items-center justify-center text-xs font-bold transition-all shadow-sm"
+              className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5E1E] text-zinc-300 hover:text-white flex items-center justify-center text-xs font-bold transition-all shadow-sm"
               aria-label="LinkedIn"
             >
               in
             </a>
             <a
-              href="https://behance.net"
+              href="https://wa.me/916374357194"
               target="_blank"
               rel="noreferrer"
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white text-zinc-300 hover:text-black flex items-center justify-center text-xs font-bold transition-all shadow-sm"
-              aria-label="Behance"
+              className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#25D366] text-zinc-300 hover:text-white flex items-center justify-center text-xs font-bold transition-all shadow-sm"
+              aria-label="WhatsApp"
             >
-              Bē
-            </a>
-            <a
-              href="https://dribbble.com"
-              target="_blank"
-              rel="noreferrer"
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white text-zinc-300 hover:text-black flex items-center justify-center text-xs font-bold transition-all shadow-sm"
-              aria-label="Dribbble"
-            >
-              🏀
+              wa
             </a>
           </div>
 
